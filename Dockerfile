@@ -1,11 +1,9 @@
 FROM alpine:latest
 
-ADD ./* /app
+ENV PORT=80
 
-RUN apk add npm nodejs
-
-WORKDIR /app
-
+RUN apk add nodejs npm
+COPY ./ /app/
+WORKDIR /appdocker 
 RUN npm install
-
-CMD ["node", "/app/app.js"]
+CMD ["npm", "start"]
